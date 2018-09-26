@@ -1,3 +1,4 @@
+import javax.swing.plaf.synth.SynthTextAreaUI;
 import java.util.Scanner;
 
 /**
@@ -73,6 +74,22 @@ public class Colosseum {
      */
     public static Pokemon buildPokemon() {
         Pokemon tempPokemon = new Pokemon();
+        System.out.println("Please name your Pokemon:");
+        tempPokemon.name = myScan.next();
+        System.out.println("How many hit point will it have?(1-50):");
+        tempPokemon.hitPoints = myScan.nextInt();
+        while (tempPokemon.hitPoints >= MAX_HIT_POINTS) {
+            System.out.println("Sorry. Hit points must be between 1 and 50:");
+            System.out.println("Split fifty points between attack level and defense level" + "   "
+                    + "Enter your attack level (1-49):");
+            System.out.println("Enter your defense level (1-3):");
+        }
+        System.out.println("Split fifty points between attack level and defense level" + "   "
+                + "Enter your attack level (1-49):");
+
+        tempPokemon.attackLevel = myScan.nextInt();
+        System.out.println("Enter your defense level (1-3):");
+        tempPokemon.defenseLevel = myScan.nextInt();
         return tempPokemon;
     }
 
@@ -90,7 +107,11 @@ public class Colosseum {
      * Implement this function.
      */
     public static void printWhoIsAhead() {
-        System.out.println("Implement me!");
+        if (firstPokemon.hitPoints > secondPokemon.hitPoints) {
+            System.out.println(firstPokemon.name + "is currently ahead!");
+        } else {
+            System.out.println(secondPokemon.name + "is currently ahead!");
+        }
     }
 
     /**
